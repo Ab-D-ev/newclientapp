@@ -9,12 +9,13 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>3.1.4</version>
-        <relativePath/> <!-- lookup parent from repository -->
+        <relativePath/>
     </parent>
 
     <groupId>com.spring.thymeleaf</groupId>
     <artifactId>thymeleaf.demo</artifactId>
     <version>0.0.1-SNAPSHOT</version>
+    <packaging>war</packaging> <!-- Packaging type changed to WAR -->
     <name>Thymeleaf</name>
     <description>Thymeleaf Example</description>
 
@@ -29,10 +30,23 @@
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
         </dependency>
 
-        <!-- Spring Web -->
+        <!-- Spring Web with Tomcat excluded -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-tomcat</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <!-- Tomcat as a provided dependency -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-tomcat</artifactId>
+            <scope>provided</scope>
         </dependency>
 
         <!-- Spring Data JPA -->
